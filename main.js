@@ -7,29 +7,27 @@ let books = [];
 
 btn.addEventListener('click', () => {
     const book = {
-        id: books.length + 1,
+        // id: books.length + 1,
         title: Title.value,
         author: Author.value,
     };
     books.push(book);
-    console.log('books', books);
     
     showBooks.innerHTML = books.map((i) =>
         `<h5>${i?.title}</h5>
       <h5>${i?.author}</h5>
-      <button type='button' onClick='removeBook(${i?.id})'>Remove</button>
+      <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
       <hr>`
     ).join('');
 });
 
-const removeBook = (id) => {
-    console.log('books2', id);
-    books = books.filter(i => i?.id !== id);
-    // console.log('books1', remBooks);
+const removeBook = (title) => {
+    console.log('books2', title);
+    books = books.filter(i => i?.title !== title);
     showBooks.innerHTML = books.map((i) =>
         `<h5>${i?.title}</h5>
       <h5>${i?.author}</h5>
-      <button type='button' onClick='removeBook(${i?.id})'>Remove</button>
+      <button onClick='removeBook(${i?.title})'>Remove</button>
       <hr>`
     ).join('');
 }
