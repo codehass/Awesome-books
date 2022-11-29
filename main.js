@@ -7,41 +7,55 @@ const btn = document.querySelector('.form button');
 let books = [];
 
 btn.addEventListener('click', () => {
+  books = JSON.parse(localStorage.getItem('data'));
   const book = {
     title: Title.value,
     author: Author.value,
   };
-  books = (JSON.parse(localStorage.getItem('data')));
+  // books = JSON.parse(localStorage.getItem('data'));
+  console.log(book);
   books.push(book);
   localStorage.setItem('data', JSON.stringify(books));
-  showBooks.innerHTML = books.map((i) => `<h5>${i?.title}</h5>
-      <h5>${i?.author}</h5>
-      <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
-      <hr>`)
+  showBooks.innerHTML = books
+    .map(
+      (i) => `
+      <div>
+      <h5>${i?.title} by ${i?.author} </h5>
+      <button onClick='removeBook(${i?.title})'>Remove</button>
+      </div>`
+    )
     .join('');
 });
 
 const removeBook = (title) => {
-  books = (JSON.parse(localStorage.getItem('data')));
+  books = JSON.parse(localStorage.getItem('data'));
   books = books.filter((i) => i?.title !== title);
   localStorage.setItem('data', JSON.stringify(books));
-  showBooks.innerHTML = books.map((i) => `<h5>${i?.title}</h5>
-      <h5>${i?.author}</h5>
+  showBooks.innerHTML = books
+    .map(
+      (i) => `
+      <div>
+      <h5>${i?.title} by ${i?.author} </h5>
       <button onClick='removeBook(${i?.title})'>Remove</button>
-      <hr>`)
+      </div>`
+    )
     .join('');
+  window.location.reload();
 };
 
 // Locale storage
 
 window.addEventListener('DOMContentLoaded', () => {
-  const userInput = JSON.parse(localStorage.getItem('data'));
-  showBooks.innerHTML = userInput
+  // localStorage.setItem('data', JSON.stringify(books));
+  books = JSON.parse(localStorage.getItem('data'));
+  showBooks.innerHTML = books
     .map(
-      (i) => `<h5>${i?.title}</h5>
-      <h5>${i?.author}</h5>
-      <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
-      <hr>`,
+      (i) => `
+      <div class="element">
+      <h5>${i?.title} by ${i?.author} </h5>
+      <button onClick='removeBook(${i?.title})'>Remove</button>
+      </div>
+      `
     )
     .join('');
 });
