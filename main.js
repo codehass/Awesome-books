@@ -6,25 +6,55 @@ const btn = document.querySelector('.form button');
 
 let books = [];
 
-btn.addEventListener('click', () => {
-  books = JSON.parse(localStorage.getItem('data'));
-  const book = {
-    title: Title.value,
-    author: Author.value,
-  };
-  // books = JSON.parse(localStorage.getItem('data'));
-  console.log(book);
-  books.push(book);
-  localStorage.setItem('data', JSON.stringify(books));
-  showBooks.innerHTML = books
-    .map(
-      (i) => `
+class Book {
+  constructor(Title, Author) {
+    this.title = Title;
+    this.author = Author;
+  }
+
+  addElement() {
+    showBooks.innerHTML = books
+      .map(
+        (i) => `
       <div>
       <h5>${i?.title} by ${i?.author} </h5>
-      <button onClick='removeBook(${i?.title})'>Remove</button>
+      <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
       </div>`
-    )
-    .join('');
+      )
+      .join('');
+  }
+
+  removeElement() {}
+}
+
+btn.addEventListener('click', () => {
+  books = JSON.parse(localStorage.getItem('data'));
+
+  const bookc = new Book(Title.value, Author.value);
+  console.log(bookc);
+
+  // const book = {
+  //   title: Title.value,
+  //   author: Author.value,
+  // };
+
+  // books = JSON.parse(localStorage.getItem('data'));
+  // console.log(book);
+
+  books.push(bookc);
+  localStorage.setItem('data', JSON.stringify(books));
+
+  bookc.addElement();
+
+  // showBooks.innerHTML = books
+  //   .map(
+  //     (i) => `
+  //     <div>
+  //     <h5>${i?.title} by ${i?.author} </h5>
+  //     <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
+  //     </div>`
+  //   )
+  //   .join('');
 });
 
 const removeBook = (title) => {
@@ -36,12 +66,16 @@ const removeBook = (title) => {
       (i) => `
       <div>
       <h5>${i?.title} by ${i?.author} </h5>
-      <button onClick='removeBook(${i?.title})'>Remove</button>
+      <button class="test" onClick='removeBook(${JSON.stringify(
+        i?.title
+      )})'>Remove</button>
       </div>`
     )
     .join('');
-  window.location.reload();
+  // window.location.reload();
 };
+
+// ***********
 
 // Locale storage
 
@@ -53,7 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
       (i) => `
       <div class="element">
       <h5>${i?.title} by ${i?.author} </h5>
-      <button onClick='removeBook(${i?.title})'>Remove</button>
+      <button onClick='removeBook(${JSON.stringify(i?.title)})'>Remove</button>
       </div>
       `
     )
