@@ -12,9 +12,17 @@ class Book {
 
   addBook(obj) {
     this.books = JSON.parse(localStorage.getItem('data'));
-    this.books.push(obj);
-    localStorage.setItem('data', JSON.stringify(this.books));
-    window.location.reload();
+    if (this.books === null) {
+      this.books = [];
+      localStorage.setItem('data', this.books);
+      this.books.push(obj);
+      localStorage.setItem('data', JSON.stringify(this.books));
+      window.location.reload();
+    } else {
+      this.books.push(obj);
+      localStorage.setItem('data', JSON.stringify(this.books));
+      window.location.reload();
+    }
   }
 
   removeBook(id) {
