@@ -3,3 +3,55 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+h1 {
+  font-size: 52px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.record {
+  width: 400px;
+  margin: auto;
+  border: 1px solid black;
+  padding: 24px;
+}
+
+.element {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: center;
+  margin: 15px auto;
+  position: relative;
+}
+
+form input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+form span {
+  color: red;
+  margin-bottom: 5px;
+}
+
+form button {
+  width: 40%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+}
