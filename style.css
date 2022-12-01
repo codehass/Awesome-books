@@ -41,6 +41,11 @@ form input {
   font-size: 16px;
 }
 
+form span {
+  color: red;
+  margin-bottom: 5px;
+}
+
 form button {
   width: 40%;
   height: 40px;

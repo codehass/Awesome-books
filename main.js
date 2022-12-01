@@ -17,9 +17,9 @@ class Book {
     window.location.reload();
   }
 
-  removeBook(title) {
+  removeBook(id) {
     this.books = JSON.parse(localStorage.getItem('data'));
-    this.books = this.books.filter((i) => i?.title !== title);
+    this.books = this.books.filter((i) => i?.id !== id);
     localStorage.setItem('data', JSON.stringify(this.books));
     window.location.reload();
   }
@@ -28,11 +28,16 @@ class Book {
 const bookc = new Book();
 
 btn.addEventListener('click', () => {
-  const bookObj = {
-    title: Title.value,
-    author: Author.value,
-  };
-  bookc.addBook(bookObj);
+  if (Title.value === '' || Author.value === '') {
+    document.querySelector('.form > span').textContent = 'All fiels are required!';
+  } else {
+    const bookObj = {
+      id: new Date().getUTCMilliseconds(),
+      title: Title.value,
+      author: Author.value,
+    };
+    bookc.addBook(bookObj);
+  }
 });
 
 // ***********
@@ -46,7 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
       (i) => `
       <div class="element">
       <h5>${i?.title} by ${i?.author} </h5>
-      <button onClick='bookc.removeBook(${JSON.stringify(i?.title)})'>Remove</button>
+      <button onClick='bookc.removeBook(${i?.id})'>Remove</button>
       </div>
       `,
     )
