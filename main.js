@@ -35,7 +35,7 @@ class Book {
 
 const bookc = new Book();
 
-btn.addEventListener('click', () => {
+const newBook = () => {
   if (Title.value === '' || Author.value === '') {
     document.querySelector('.form > span').textContent = 'All fiels are required!';
   } else {
@@ -46,7 +46,7 @@ btn.addEventListener('click', () => {
     };
     bookc.addBook(bookObj);
   }
-});
+};
 
 // ***********
 

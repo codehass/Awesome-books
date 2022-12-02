@@ -2,6 +2,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+  background: rgb(242, 241, 241);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding-left: 80px;
+  padding-right: 80px;
+  height: 57px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul li {
+  display: block;
+  list-style: none;
+  font-weight: 400;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  padding: 15px 20px;
+  font-size: 20px;
+  color: black;
 }
 
 h1 {
@@ -11,23 +49,53 @@ h1 {
 }
 
 .record {
-  width: 400px;
-  margin: auto;
-  border: 1px solid black;
+  width: 60%;
+  height: 100%;
+  margin: 10px auto;
   padding: 24px;
+  background: #fff;
+  border-radius: 5px;
 }
 
 .element {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-bottom: 10px;
+  font-size: 16px;
+  padding: 9px;
+  background: rgb(242, 241, 241);
+  border-radius: 7px;
+}
+
+form button {
+  width: 40%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  color: #fff;
+  background: #1d9207;
+  border: none;
+  border-radius: 5px;
+}
+
+.element button {
+  background: #f53030;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 40%;
   align-items: center;
   margin: 15px auto;
   position: relative;
@@ -46,12 +114,40 @@ form span {
   margin-bottom: 5px;
 }
 
-form button {
-  width: 40%;
-  height: 40px;
-  font-size: 16px;
-  font-weight: 400;
+.contact {
+  width: 60%;
+  margin: auto;
+}
+
+.contact p {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.contact ul {
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.contact ul li {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  height: auto;
   position: absolute;
-  bottom: -40px;
-  right: 0;
+  bottom: 0;
+  padding: 24px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+}
+
+.copy-right {
+  margin-right: 40px;
 }
